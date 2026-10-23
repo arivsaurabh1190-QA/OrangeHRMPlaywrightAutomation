@@ -1,0 +1,24 @@
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Generated test reports and artifacts
+report.html
+test-results/
+playwright-report/
+*.zip
+
+# Editor and operating system files
+.vscode/
+.DS_Store
+Thumbs.db
