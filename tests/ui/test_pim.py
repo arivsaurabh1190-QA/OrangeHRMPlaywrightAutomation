@@ -18,7 +18,7 @@ def test_pim_page_displays_employee_information(page: Page):
         username="Admin",
         password="admin123",
     )
-    page.wait_for_timeout(600000)
+
     # Step 3: Verify that login succeeded
     expect(dashboard_page.dashboard_heading).to_be_visible()
 
@@ -44,6 +44,8 @@ def test_search_employee_by_id(page: Page):
         password="admin123",
     )
 
+    expect(login_page.dashboard_heading).to_be_visible()
+
     # Open PIM
     pim_page.open()
 
@@ -51,5 +53,6 @@ def test_search_employee_by_id(page: Page):
     pim_page.search_by_employee_id("01715")
 
     # Verify the matching employee appears
-    expect(page.get_by_text("Amelia Charlie Brown")).to_be_visible()
-    expect(page.get_by_text("01715", exact=True)).to_be_visible()
+    employee_row = page.get_by_role("row").filter(has_text="01715")
+    expect(employee_row).to_contain_text("Amelia")
+    expect(employee_row).to_contain_text("Brown")
