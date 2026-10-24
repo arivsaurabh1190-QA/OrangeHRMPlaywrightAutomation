@@ -36,7 +36,7 @@ jobs:
         run: python -m playwright install --with-deps chromium
 
       - name: Run pytest
-        run: python -m pytest -v -n 0
+        run: xvfb-run -a python -m pytest -v -n 0
 
       - name: Upload test reports and failure artifacts
         if: always()
